@@ -28,7 +28,6 @@ createApp({
       try {
         const data = await fetch(url)
         const pokemon = await data.json()
-        console.log(await this.fetchPokemonData(pokemon.results))
         this.pokedex.list = await this.fetchPokemonData(pokemon.results)
         this.pokedex.next = pokemon.next
         this.pokedex.prev = pokemon.previous
