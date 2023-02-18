@@ -19,7 +19,7 @@
       <h1 class="text-3xl font-bold mb-2">Basic VueJS - Pokedex Example</h1>
 
       <!--* VUE APP START -->
-      <div id="vue" class="bg-base-300 p-2 h-full flex flex-col">
+      <div id="vue" class="p-2 h-full flex flex-col">
         <section id="pagination" class="flex justify-end mb-4">
           <div class="bg-neutral flex items-center h-full rounded-2xl">
             <button class="btn btn-secondary" @click="fetchPrevPokemon">
@@ -35,13 +35,23 @@
         </section>
 
         <section id="pokedex" class="h-full">
-          <ul class="flex flex-wrap gap-2 w-full">
-            <li v-for="pokemon in pokedex.list" class="card w-[49%] glass">
-              <figure>
-                <img :src="pokemon.sprites.front_default" :alt="pokemon.name" />
+          <ul class="flex flex-wrap gap-4 w-full">
+            <li
+              v-for="pokemon in pokedex.list"
+              class="card bg-base-100 shadow-xl w-[49%]"
+            >
+              <figure class="bg-base-200">
+                <img
+                  class="w-1/3"
+                  :src="pokemon.sprites.front_default"
+                  :alt="pokemon.name"
+                />
               </figure>
-              <div class="card-body">
-                <h2 class="card-title">{{pokemon.name}}</h2>
+              <div class="h-fit p-4">
+                <div class="flex justify-between w-full">
+                  <h2 class="card-title">{{pokemon.name}}</h2>
+                  <p>id: {{pokemon.id}}</p>
+                </div>
               </div>
             </li>
           </ul>
