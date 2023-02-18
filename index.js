@@ -86,8 +86,16 @@ createApp({
     toggleFavorite(event) {
       const pokeID = event.target.dataset.id * 1
       const pokemon = this.pokedex.list.find((pokemon) => pokemon.id === pokeID)
-      pokemon.favorite = !pokemon.favorite
-      this.favorites.push(pokemon)
+
+      if (pokemon.favorite) {
+        pokemon.favorite = !pokemon.favorite
+        this.favorites = this.favorites.filter(
+          (poke) => poke.name !== pokemon.name
+        )
+      } else {
+        pokemon.favorite = !pokemon.favorite
+        this.favorites.push(pokemon)
+      }
     },
     logFavorites() {
       console.log(this.favorites)
