@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="acid">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.50.1/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script type="module" src="index.js" defer></script>
+    <script src="https://cdn.tailwindcss.com" defer></script>
+
+    <title>Basic VueJS - Pokedex Example</title>
+  </head>
+  <body class="">
+    <main class="max-w-4xl m-auto my-2 flex flex-col h-full">
+      <h1 class="text-3xl font-bold mb-2">Basic VueJS - Pokedex Example</h1>
+
+      <!--* VUE APP START -->
+      <div id="vue" class="bg-base-300 p-2 h-full flex flex-col">
+        <section id="pagination" class="flex justify-end mb-4">
+          <div class="bg-neutral flex items-center h-full rounded-2xl">
+            <button class="btn btn-secondary" @click="fetchPrevPokemon">
+              Prev Page
+            </button>
+            <div class="w-5 h-full text-center text-xl text-neutral-content">
+              {{pageCount}}
+            </div>
+            <button class="btn btn-secondary" @click="fetchNextPokemon">
+              Next Page
+            </button>
+          </div>
+        </section>
+
+        <section id="pokedex" class="h-full">
+          <ul class="flex flex-wrap gap-2 w-full">
+            <li v-for="pokemon in pokedex.list" class="card w-[49%] glass">
+              <figure>
+                <img :src="pokemon.sprites.front_default" :alt="pokemon.name" />
+              </figure>
+              <div class="card-body">
+                <h2 class="card-title">{{pokemon.name}}</h2>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </div>
+      <!--* VUE APP END -->
+    </main>
+  </body>
+</html>
